@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scisors</title>
+</head>
+<body>
+	<h1>Win: <span id="win">0</span></h1>
+		<br>
+	<h1>Lose: <span id="lose">0</span></h1>
+		<br>
+	<h1>tie: <span id="tie">0</span></h1>
+		<br>
+	<script type="text/javascript">
+
+	
+	var win = 0;
+	var lose = 0;
+	var tie = 0;
+	
+	//document.onkeyup when a key is released then perform the function
+	document.onkeyup = function()	
+	{	 
+		//gets the ID in the html--.textContent changes the content.
+		//event.key tracks what key is pressed
+		//document.getElementById("user-text").textContent = event.key;
+
+	var userInput = event.key;
+
+	var rpsArray =['r','p','s'];
+			//creates a random number between 0 and 3----rpsArray = 3
+	var randNum = Math.floor(Math.random()* rpsArray.length); 
+			//gets letter from rpsArray randomly. 
+	var compRand = rpsArray[randNum];
+	
+		
+		if(userInput === 'r' || userInput === 'p' || userInput === 's')
+		{ 
+			if(compRand === 'r' && userInput === 'r' || 
+			   compRand === 'p' && userInput === 'p' || 
+			   compRand === 's' && userInput === 's')
+			{
+				tie++;
+				document.getElementById('tie').textContent = tie;
+			}
+			else if(compRand === 'r' && userInput === 's' || 
+			   		compRand === 'p' && userInput === 'r' || 
+			   		compRand === 's' && userInput === 'p')
+			{
+				lose++;
+				document.getElementById('lose').textContent = lose;
+			}
+			else if(compRand === 'r' && userInput === 'p' || 
+			   		compRand === 'p' && userInput === 's' || 
+			   		compRand === 's' && userInput === 'r')
+			{
+				win++;
+				document.getElementById('win').textContent = win; 
+						//Testing 
+						console.log(userInput); 
+						console.log(compRand);
+						console.log("Win");
+			}
+				
+		}
+
+	}
+	</script>
+</body>
+</html>
